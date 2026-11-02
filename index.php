@@ -81,12 +81,12 @@ $done  = count(array_filter($_SESSION['tasks'], fn($t) => $t['done']));
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Plain Tasks</title>
+  <title>Task Manager</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="site-header">
-    <h1>Plain Tasks</h1>
+    <h1>Task Manager</h1>
     <p class="tally"><?= $done ?> of <?= $total ?> done</p>
   </header>
 
