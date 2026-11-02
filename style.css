@@ -1,0 +1,256 @@
+:root {
+  --bg: #e9eef0;
+  --surface: #ffffff;
+  --ink: #17262b;
+  --muted: #5b6e75;
+  --line: #cfd9dd;
+  --accent: #0f6b7a;
+  --accent-ink: #ffffff;
+  --danger: #b3261e;
+  --done: #8a9ba1;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #101a1d; --surface: #182428; --ink: #e6eef0; --muted: #93a8af;
+    --line: #2b3d43; --accent: #4cc2d4; --accent-ink: #082127;
+    --danger: #ff8a80; --done: #6f858c;
+  }
+}
+
+* { 
+  box-sizing: border-box; 
+}
+
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.site-header {
+  max-width: 1000px; margin: 0 auto; padding: 2rem 1rem 1rem;
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+}
+
+h1 { 
+  margin: 0; 
+  font-size: 2rem; 
+  letter-spacing: -0.02em; 
+}
+
+h2 { 
+  margin: 0 0 1rem; 
+  font-size: 1.125rem; 
+}
+
+.tally { 
+  margin: 0; 
+  color: var(--muted); 
+}
+
+
+main {
+  max-width: 1000px; 
+  margin: 0 auto; 
+  padding: 0 1rem 3rem;
+  display: grid; 
+  grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+  gap: 1.25rem; align-items: start;
+}
+
+.panel { 
+  background: var(--surface); 
+  border: 1px solid var(--line); 
+  border-radius: 10px; padding: 1.25rem;
+ }
+
+label { 
+  display: flex; 
+  justify-content: space-between; 
+  font-weight: 600; font-size: .9rem; 
+  margin: 1rem 0 .35rem; }
+
+label:first-of-type { 
+  margin-top: 0; 
+}
+.counter { 
+  font-weight: 400; 
+  color: var(--muted); 
+}
+
+
+.counter.over { 
+  color: var(--danger); 
+}
+
+
+input[type="text"], textarea {
+  width: 100%; 
+  padding: .6rem .7rem; 
+  font: inherit; 
+  color: inherit;
+  background: var(--bg); 
+  border: 1px solid var(--line); 
+  border-radius: 6px;
+}
+textarea { 
+  resize: vertical; 
+}
+
+:focus-visible { 
+  outline: 3px solid var(--accent); 
+  outline-offset: 2px; 
+}
+
+.actions { margin-top: 1.25rem; 
+  display: flex; 
+  gap: .5rem; 
+}
+
+.btn {
+  display: inline-block; 
+  padding: .55rem 1rem; 
+  font: inherit; 
+  font-weight: 600; 
+  text-decoration: none;
+  color: var(--ink); 
+  background: transparent; 
+  border: 1px solid var(--line); 
+  border-radius: 6px; 
+  cursor: pointer;
+
+}
+
+.btn.primary { 
+  background: var(--accent); 
+  color: var(--accent-ink); 
+  border-color: var(--accent);
+ }
+
+.btn:hover { 
+  filter: brightness(1.08);
+ }
+
+.errors { 
+  margin: 0 0 1rem; 
+  padding: .75rem 1rem .75rem 2rem; 
+  color: var(--danger); 
+  border: 1px solid var(--danger);
+ border-radius: 6px; 
+}
+
+.list-head { 
+  display: flex;
+   justify-content: space-between; 
+   align-items: center; 
+   margin-bottom: 1rem; }
+
+
+.list-head h2 { 
+  margin: 0;
+ }
+
+.empty { 
+  color: var(--muted);
+   margin: 0; 
+  }
+
+.tasks 
+{ 
+  list-style: none; 
+  margin: 0; 
+  padding: 0; 
+}
+
+.task 
+{ 
+  display: flex; 
+  gap: .85rem; 
+  align-items: flex-start; 
+  padding: .9rem 0; 
+  border-top: 1px solid var(--line); 
+}
+
+.task:first-child { 
+  border-top: 0; 
+  padding-top: 0;
+ }
+
+.task .body { 
+  flex: 1; 
+  min-width: 0; 
+  overflow-wrap: anywhere; 
+}
+
+
+.task .body p {
+   margin: .15rem 0 0; 
+   color: var(--muted);
+   }
+
+.task.is-done .body strong { 
+  text-decoration: line-through; 
+  color: var(--done); 
+}
+
+.task.is-done .body p { 
+  color: var(--done); 
+}
+
+
+.check {
+  width: 1.5rem; 
+  height: 1.5rem; 
+  margin-top: .1rem; 
+  padding: 0; cursor: pointer;
+  border: 2px solid var(--accent); 
+  border-radius: 50%; 
+  background: transparent; 
+  position: relative;
+}
+
+.check[aria-pressed="true"] { 
+  background: var(--accent);
+ }
+
+.check[aria-pressed="true"]::after {
+  content: ""; 
+  position: absolute; 
+  left: 6px; top: 2px; 
+  width: 6px; 
+  height: 11px;
+  border: solid var(--accent-ink); 
+  border-width: 0 2px 2px 0; 
+  transform: rotate(45deg);
+
+}
+
+.row-actions { 
+  display: flex; 
+  gap: .75rem; 
+  align-items: center; 
+}
+
+.link-btn {
+  background: none;
+   border: 0; 
+   padding: 0; 
+   font: inherit; 
+   font-size: .9rem; 
+   color: var(--accent);
+  text-decoration: underline; 
+  cursor: pointer;
+}
+
+.link-btn.danger { 
+  color: var(--danger); 
+}
+
+@media (max-width: 760px) {
+  main { grid-template-columns: 1fr; }
+  .task { flex-wrap: wrap; }
+  .row-actions { width: 100%; padding-left: 2.35rem; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .check, 
+  .btn { transition: background-color .15s, filter .15s; }
+}
